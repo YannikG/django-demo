@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block page_content %}
+    <div class="row">
+        <h1>Blog Posts</h1>
+    </div>
+    <div class="row">
+        <form method="GET">
+            {{form.blog_thread}}
+            <button class="btn btn-primary" type="submit">Suchen</button>
+        </form>
+    </div>
+    <div class="row">
+        {% for post in posts %}
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{post.title}}</h5>
+                        <h6 class="card-subtitle text-muted">{{post.blog_thread.name}}</h6>
+                        <a href="{{post.get_absolute_url}}">Zum Beitrag</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
